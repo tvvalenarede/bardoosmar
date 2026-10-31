@@ -1,1 +1,774 @@
 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa3 Irmãos · Taubaté</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (gratuito) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ----- RESET & BASE ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f6f2;
+            color: #1e2a3a;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ----- HEADER / NAV ----- */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(30, 42, 58, 0.92);
+            backdrop-filter: blur(8px);
+            padding: 12px 0;
+            transition: background 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #f5e7c8;
+            letter-spacing: 1px;
+        }
+        .logo span {
+            color: #d4af37;
+        }
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        .nav a {
+            color: #eae6dd;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.2s;
+            position: relative;
+        }
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d4af37;
+            transition: width 0.3s;
+        }
+        .nav a:hover {
+            color: #fff;
+        }
+        .nav a:hover::after {
+            width: 100%;
+        }
+        .nav .btn-contato {
+            background: #d4af37;
+            color: #1e2a3a;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .nav .btn-contato:hover {
+            background: #e6c65c;
+            transform: scale(1.03);
+        }
+        .nav .btn-contato::after {
+            display: none;
+        }
+
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: #eae6dd;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: rgba(30, 42, 58, 0.98);
+                padding: 20px 0;
+                gap: 1.2rem;
+                border-radius: 0 0 12px 12px;
+                margin-top: 10px;
+            }
+            .nav.open {
+                display: flex;
+            }
+            .nav a {
+                font-size: 1.1rem;
+            }
+            .nav .btn-contato {
+                background: transparent;
+                border: 2px solid #d4af37;
+                color: #d4af37;
+                padding: 6px 24px;
+            }
+            .nav .btn-contato:hover {
+                background: #d4af37;
+                color: #1e2a3a;
+            }
+        }
+
+        /* ----- HERO ----- */
+        .hero {
+            margin-top: 76px; /* altura do header */
+            min-height: 90vh;
+            background: url('https://duyn491kcolsw.cloudfront.net/files/0h/0h4/0h4d1p.png?ph=43f42a89a7') center center / cover no-repeat;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(20, 30, 45, 0.55);
+            backdrop-filter: brightness(0.8);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            max-width: 800px;
+        }
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .hero-content h1 span {
+            color: #d4af37;
+        }
+        .hero-content p {
+            font-size: 1.4rem;
+            font-weight: 300;
+            margin-top: 1rem;
+            opacity: 0.95;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .hero-content .btn-hero {
+            display: inline-block;
+            margin-top: 2rem;
+            background: #d4af37;
+            color: #1e2a3a;
+            font-weight: 700;
+            padding: 14px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+        }
+        .hero-content .btn-hero:hover {
+            background: #e6c65c;
+            transform: translateY(-3px);
+        }
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            .hero {
+                min-height: 70vh;
+            }
+        }
+
+        /* ----- SEÇÕES GERAIS ----- */
+        section {
+            padding: 80px 0;
+        }
+        .section-title {
+            font-size: 2.6rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: #1e2a3a;
+        }
+        .section-title span {
+            color: #d4af37;
+        }
+        .section-sub {
+            font-size: 1.1rem;
+            color: #5a6a7a;
+            max-width: 700px;
+            margin: 0 auto 2.5rem auto;
+            text-align: center;
+        }
+        .bg-light {
+            background: #ffffff;
+        }
+        .bg-dark-light {
+            background: #f0ede7;
+        }
+
+        /* ----- SOBRE ----- */
+        .sobre-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .sobre-grid img {
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            width: 100%;
+        }
+        .sobre-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        .sobre-text ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        .sobre-text ul li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            border-bottom: 1px solid #eee;
+        }
+        .sobre-text ul li i {
+            color: #d4af37;
+            font-size: 1.2rem;
+            width: 24px;
+        }
+        .btn-mais {
+            display: inline-block;
+            background: #1e2a3a;
+            color: #fff;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+            margin-top: 0.5rem;
+        }
+        .btn-mais:hover {
+            background: #2c3d55;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            .sobre-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .sobre-text h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* ----- PRODUTOS (grid) ----- */
+        .produtos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .produto-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            padding-bottom: 1.5rem;
+        }
+        .produto-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .produto-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #f0ede7;
+        }
+        .produto-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 1rem 1rem 0.3rem;
+            color: #1e2a3a;
+        }
+        .produto-card .preco {
+            color: #d4af37;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .produto-card .whatsapp-link {
+            display: inline-block;
+            margin-top: 0.8rem;
+            background: #25d366;
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .produto-card .whatsapp-link:hover {
+            background: #1da851;
+        }
+        .btn-todos {
+            display: block;
+            width: fit-content;
+            margin: 2.5rem auto 0;
+            background: transparent;
+            border: 2px solid #1e2a3a;
+            color: #1e2a3a;
+            padding: 12px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-todos:hover {
+            background: #1e2a3a;
+            color: #fff;
+        }
+
+        /* ----- TECIDOS ----- */
+        .tecidos-bg {
+            background: url('https://duyn491kcolsw.cloudfront.net/files/31/31y/31yamq.png?ph=43f42a89a7') center center / cover no-repeat;
+            position: relative;
+            color: #fff;
+            padding: 100px 0;
+        }
+        .tecidos-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(20, 30, 45, 0.6);
+        }
+        .tecidos-bg .container {
+            position: relative;
+            z-index: 2;
+        }
+        .tecidos-bg .section-title {
+            color: #fff;
+        }
+        .tecidos-bg p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            opacity: 0.95;
+        }
+
+        /* ----- DEPOIMENTOS ----- */
+        .depoimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .depoimento {
+            background: #fff;
+            padding: 2rem 1.8rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+            border-left: 4px solid #d4af37;
+        }
+        .depoimento p {
+            font-style: italic;
+            color: #2c3d55;
+        }
+        .depoimento .autor {
+            font-weight: 700;
+            margin-top: 1rem;
+            color: #1e2a3a;
+        }
+
+        /* ----- RODAPÉ ----- */
+        .footer {
+            background: #1e2a3a;
+            color: #eae6dd;
+            padding: 60px 0 30px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+        }
+        .footer-grid h4 {
+            color: #d4af37;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .footer-grid p, .footer-grid a {
+            color: #c0c8d4;
+            line-height: 1.8;
+        }
+        .footer-grid a:hover {
+            color: #fff;
+        }
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .footer-social a {
+            background: rgba(255,255,255,0.08);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: background 0.3s, transform 0.2s;
+            color: #eae6dd;
+        }
+        .footer-social a:hover {
+            background: #d4af37;
+            color: #1e2a3a;
+            transform: scale(1.05);
+        }
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 2rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #8a96a8;
+        }
+
+        /* ----- BOTÕES FLUTUANTES (Instagram e Facebook) ----- */
+        .float-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            z-index: 999;
+        }
+        .float-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #fff;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+        .float-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+        }
+        .float-btn.instagram {
+            background: radial-gradient(circle at 30% 30%, #fdf497, #fd5949, #d6249f, #285aeb);
+        }
+        .float-btn.facebook {
+            background: #1877f2;
+        }
+        /* pequeno texto de rótulo opcional */
+        .float-btn .tooltip {
+            display: none;
+            position: absolute;
+            right: 70px;
+            background: #1e2a3a;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+        .float-btn:hover .tooltip {
+            display: block;
+        }
+        @media (max-width: 600px) {
+            .float-buttons {
+                bottom: 20px;
+                right: 20px;
+                gap: 10px;
+            }
+            .float-btn {
+                width: 52px;
+                height: 52px;
+                font-size: 1.6rem;
+            }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.3); }
+            70% { box-shadow: 0 0 0 12px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        /* Ajuste para o link do WhatsApp nos produtos */
+        .whatsapp-link i {
+            margin-right: 6px;
+        }
+
+        /* Responsividade extra */
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="logo">Casa3 <span>Irmãos</span></div>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="nav" id="navMenu">
+                <a href="#hero">Início</a>
+                <a href="#produtos">Produtos</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#contato" class="btn-contato">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Toalhas de Banho <br><span>e muito mais</span></h1>
+            <p>Tapetes, cortinas, tecidos, cobertores, edredom e roupas para toda a família.</p>
+            <a href="#produtos" class="btn-hero">Conheça nossos produtos</a>
+        </div>
+    </section>
+
+    <!-- ========== SOBRE ========== -->
+    <section id="sobre" class="bg-light">
+        <div class="container">
+            <div class="sobre-grid">
+                <div>
+                    <img src="https://43f42a89a7.cbaul-cdnwnd.com/87c53d25708fd535637bb36523efac03/200000000-17efc17efe/3irmaos%20foto1.fw.png?ph=43f42a89a7" alt="Casa 3 Irmãos - Loja">
+                </div>
+                <div class="sobre-text">
+                    <h2>Conheça a <span>Casa 3 Irmãos</span> de Taubaté</h2>
+                    <p>Localizada na Rua Coronel Jordão, 115, Centro de Taubaté – SP, nossa loja oferece uma variedade de produtos para cama, mesa e banho, além de decoração e tecidos.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Calças, camisas, toalhas de banho</li>
+                        <li><i class="fas fa-check"></i> Cobertores, edredom, blusas e jaquetas</li>
+                        <li><i class="fas fa-check"></i> Tecidos soft estampado, oxford xadrez</li>
+                        <li><i class="fas fa-check"></i> Cortinas rústicas e tapetes diversos</li>
+                    </ul>
+                    <p><strong>Compre online pelo site:</strong> <a href="http://www.tvvalenarede.com.br" target="_blank" style="color:#d4af37;font-weight:600;">www.tvvalenarede.com.br</a> ou pelo telefone <strong>12 98112-9982</strong></p>
+                    <a href="#contato" class="btn-mais">Mais sobre nós</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRODUTOS ========== -->
+    <section id="produtos" class="bg-dark-light">
+        <div class="container">
+            <h2 class="section-title" style="text-align:center;">Nossos <span>Produtos</span></h2>
+            <p class="section-sub">Seleção de itens para sua casa e família. Consulte valores pelo WhatsApp.</p>
+
+            <div class="produtos-grid">
+                <!-- Produto 1 -->
+                <div class="produto-card">
+                    <img src="https://43f42a89a7.cbaul-cdnwnd.com/87c53d25708fd535637bb36523efac03/200000024-24c6624c68/foto3.fw.png?ph=43f42a89a7" alt="Cobertor de Casal">
+                    <h3>Cobertor de Casal</h3>
+                    <div class="preco">Preço sob consulta</div>
+                    <a href="https://wa.me/5512981129982" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+                <!-- Produto 2 -->
+                <div class="produto-card">
+                    <img src="https://43f42a89a7.cbaul-cdnwnd.com/87c53d25708fd535637bb36523efac03/200000022-9954799548/foto5.fw.png?ph=43f42a89a7" alt="Cobertor Casal">
+                    <h3>Cobertor Casal</h3>
+                    <div class="preco">Preço sob consulta</div>
+                    <a href="https://wa.me/5512981129982" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+                <!-- Produto 3 -->
+                <div class="produto-card">
+                    <img src="https://43f42a89a7.cbaul-cdnwnd.com/87c53d25708fd535637bb36523efac03/200000020-908e6908e7/foto7.fw.png?ph=43f42a89a7" alt="Cobertor Casal">
+                    <h3>Cobertor Casal</h3>
+                    <div class="preco">Preço sob consulta</div>
+                    <a href="https://wa.me/5512981129982" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+                <!-- Produto 4 -->
+                <div class="produto-card">
+                    <img src="https://43f42a89a7.cbaul-cdnwnd.com/87c53d25708fd535637bb36523efac03/200000012-7684076841/toalhas%20de%20banho.fw.png?ph=43f42a89a7" alt="Toalhas de Banho">
+                    <h3>Toalhas de Banho</h3>
+                    <div class="preco">Preço sob consulta</div>
+                    <a href="https://wa.me/5512981129982" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+                <!-- Produto 5 -->
+                <div class="produto-card">
+                    <img src="https://43f42a89a7.cbaul-cdnwnd.com/87c53d25708fd535637bb36523efac03/200000010-1900f19010/fotoboa1.fw-9.png?ph=43f42a89a7" alt="Cobertor de Casal">
+                    <h3>Cobertor de Casal</h3>
+                    <div class="preco">Preço sob consulta</div>
+                    <a href="https://wa.me/5512981129982" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+                <!-- Produto 6 -->
+                <div class="produto-card">
+                    <img src="https://43f42a89a7.cbaul-cdnwnd.com/87c53d25708fd535637bb36523efac03/200000008-2e12e2e131/endredon.fw.png?ph=43f42a89a7" alt="Edredom para Casal">
+                    <h3>Edredom para Casal</h3>
+                    <div class="preco">Preço sob consulta</div>
+                    <a href="https://wa.me/5512981129982" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+                <!-- Produto 7 -->
+                <div class="produto-card">
+                    <img src="https://43f42a89a7.cbaul-cdnwnd.com/87c53d25708fd535637bb36523efac03/200000006-a71e3a71e4/travesseiros.fw.png?ph=43f42a89a7" alt="Travesseiros">
+                    <h3>Travesseiros</h3>
+                    <div class="preco">Preço sob consulta</div>
+                    <a href="https://wa.me/5512981129982" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+                <!-- Produto 8 -->
+                <div class="produto-card">
+                    <img src="https://43f42a89a7.cbaul-cdnwnd.com/87c53d25708fd535637bb36523efac03/200000004-265cd265cf/fotoboa1.fw.png?ph=43f42a89a7" alt="Cobertor Casal">
+                    <h3>Cobertor Casal</h3>
+                    <div class="preco">Preço sob consulta</div>
+                    <a href="https://wa.me/5512981129982" target="_blank" class="whatsapp-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+
+            <a href="#" class="btn-todos">Ver todos os produtos</a>
+        </div>
+    </section>
+
+    <!-- ========== TECIDOS ========== -->
+    <section class="tecidos-bg" id="tecidos">
+        <div class="container">
+            <h2 class="section-title">Tecidos de <span>qualidade</span></h2>
+            <p>Na Casa 3 Irmãos você encontra uma ampla variedade de tecidos: oxford, soft, tricoline e muito mais. Cores vibrantes e estampas exclusivas para artesanato, decoração e confecção.</p>
+        </div>
+    </section>
+
+    <!-- ========== DEPOIMENTOS ========== -->
+    <section id="depoimentos" class="bg-light">
+        <div class="container">
+            <h2 class="section-title" style="text-align:center;">O que nossos <span>clientes</span> dizem</h2>
+            <div class="depoimentos-grid">
+                <div class="depoimento">
+                    <p>"Na nossa casa, há camisas diferentes que proporcionam um ar específico para cada um de nós. A famosa guerra de camisas e calças é um ritual de todos os dias. Mais um motivo para comprar na Casa 3 Irmãos!"</p>
+                    <div class="autor">— Joana Paes</div>
+                </div>
+                <div class="depoimento">
+                    <p>"Sempre quis equipar minha família com modelos estilosos, mas tive medo do preço. Aqui mudei de opinião e minha cama está mais convidativa do que nunca com os produtos da Casa 3 Irmãos."</p>
+                    <div class="autor">— Maria de Azevedo</div>
+                </div>
+                <div class="depoimento">
+                    <p>"Considero as calças da Rita e Bete pequenas obras-primas. Cores modernas e materiais variados. Se meu marido não reclamasse, compraria roupas todos os dias na Casa 3 Irmãos!"</p>
+                    <div class="autor">— Mariana Mata</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTATO / RODAPÉ ========== -->
+    <footer class="footer" id="contato">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>Casa3 Irmãos</h4>
+                    <p>Rua Coronel Jordão, 115 – Centro<br>Taubaté – SP</p>
+                    <p><strong>Telefone:</strong> 12 98112-9982</p>
+                    <p><strong>E-mail:</strong> casa3irmaos2025@gmail.com</p>
+                </div>
+                <div>
+                    <h4>Informações</h4>
+                    <p><a href="#">Política de Privacidade</a></p>
+                    <p><a href="#">Termos e Condições</a></p>
+                    <p><a href="#sobre">Sobre nós</a></p>
+                </div>
+                <div>
+                    <h4>Redes Sociais</h4>
+                    <div class="footer-social">
+                        <a href="https://instagram.com/tvvalenarede" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com/tvvalenaredebonani" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Casa3 Irmãos · Desenvolvido pela TVVALENAREDE ❤️
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== BOTÕES FLUTUANTES ========== -->
+    <div class="float-buttons">
+        <a href="https://instagram.com/tvvalenarede" target="_blank" class="float-btn instagram" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+            <span class="tooltip">@tvvalenarede</span>
+        </a>
+        <a href="https://facebook.com/tvvalenaredebonani" target="_blank" class="float-btn facebook" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+            <span class="tooltip">tvvalenarede bonani</span>
+        </a>
+    </div>
+
+    <!-- ========== SCRIPT MENU MOBILE ========== -->
+    <script>
+        const toggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('navMenu');
+        toggle.addEventListener('click', () => {
+            nav.classList.toggle('open');
+        });
+        // Fechar menu ao clicar em um link (mobile)
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    nav.classList.remove('open');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
