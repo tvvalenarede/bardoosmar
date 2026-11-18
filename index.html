@@ -84,14 +84,14 @@
         }
 
         /* ================================================= */
-        /* HERO — Marca d'água em cima + Letreiro embaixo    */
+        /* HERO — Animação GIF no topo + Letreiro embaixo    */
         /* ================================================= */
         .hero {
             position: relative;
             background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
                         url('https://duyn491kcolsw.cloudfront.net/files/3m/3mm/3mm916.jpg?ph=4e8955aa2f')
                         no-repeat center center / cover;
-            min-height: 88vh;
+            min-height: 92vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -103,23 +103,33 @@
             isolation: isolate;
         }
 
-        /* Foto marca d'água — agora no TOPO, visível por inteiro */
-        .hero-watermark {
-            display: block;
-            width: 72%;
-            max-width: 780px;
-            height: auto;
-            object-fit: contain;
-            opacity: 0.88;
-            mix-blend-mode: screen;
-            filter: contrast(1.05) saturate(1.1);
-            pointer-events: none;
-            user-select: none;
-            z-index: 1;
+        /* Container da animação GIF */
+        .hero-animacao {
+            position: relative;
+            z-index: 2;
+            width: 78%;
+            max-width: 900px;
             margin-bottom: 2rem;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow:
+                0 10px 40px rgba(0,0,0,0.6),
+                0 0 0 3px rgba(212, 163, 115, 0.45),
+                0 0 60px rgba(212, 163, 115, 0.15);
+            background: rgba(0,0,0,0.25);
+            line-height: 0;
         }
 
-        /* Letreiro — agora ABAIXO da foto */
+        .hero-animacao img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* Letreiro abaixo da animação */
         .hero-content {
             position: relative;
             z-index: 2;
@@ -361,16 +371,16 @@
         /* --- RESPONSIVO --- */
         @media (max-width: 768px) {
             .sobre { grid-template-columns: 1fr; }
-            .hero { min-height: 78vh; padding: 2rem 15px 2.5rem; }
-            .hero-watermark { width: 88%; opacity: 0.82; margin-bottom: 1.5rem; }
+            .hero { min-height: 82vh; padding: 2rem 15px 2.5rem; }
+            .hero-animacao { width: 92%; margin-bottom: 1.5rem; border-radius: 14px; }
             .hero h1 { font-size: 2.2rem; }
             .grid-produtos { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 480px) {
             .grid-produtos { grid-template-columns: 1fr; }
             .logo { font-size: 1.4rem; }
-            .hero { min-height: 72vh; padding: 1.5rem 12px 2rem; }
-            .hero-watermark { width: 96%; opacity: 0.78; margin-bottom: 1.2rem; }
+            .hero { min-height: 75vh; padding: 1.5rem 12px 2rem; }
+            .hero-animacao { width: 100%; margin-bottom: 1.2rem; border-radius: 10px; }
             .hero h1 { font-size: 1.85rem; }
             .hero p { font-size: 1.05rem; }
         }
@@ -391,16 +401,17 @@
     </header>
 
     <!-- ================================================= -->
-    <!-- HERO — Foto marca d'água EM CIMA + Letreiro EMBAIXO -->
+    <!-- HERO — Animação GIF (bardoosmar-animacao.gif)     -->
     <!-- ================================================= -->
     <section class="hero">
-        <img
-            src="https://raw.githubusercontent.com/tvvalenarede/bardoosmar/main/fotobardoosmar.png"
-            alt="Foto Bar do Osmar de Taubaté"
-            class="hero-watermark"
-            loading="eager"
-            decoding="async"
-            onerror="this.onerror=null; this.src='https://tvvalenarede.github.io/bardoosmar/fotobardoosmar.png';">
+        <div class="hero-animacao">
+            <img
+                src="https://raw.githubusercontent.com/tvvalenarede/bardoosmar/main/bardoosmar-animacao.gif"
+                alt="Bar do Osmar de Taubaté — Animação"
+                loading="eager"
+                decoding="async"
+                onerror="this.onerror=null; this.src='https://tvvalenarede.github.io/bardoosmar/bardoosmar-animacao.gif';">
+        </div>
 
         <div class="hero-content">
             <h1>Bar do Osmar de Taubaté</h1>
